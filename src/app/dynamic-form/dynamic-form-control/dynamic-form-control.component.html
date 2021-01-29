@@ -1,5 +1,10 @@
-<mat-form-field appearance="fill">
-    <mat-select [formControl]="control">
-        <mat-option *ngFor="let data of formControlData.data" [value]="data.id">{{data.name}}</mat-option>
-    </mat-select>
-</mat-form-field>
+<ng-container [ngSwitch]="formControlData.type">
+    <mat-form-field *ngSwitchCase="'dropdown'" appearance="fill">
+        <mat-select [formControl]="control">
+            <mat-option *ngFor="let data of formControlData.data" [value]="data.id">{{data.name}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-slide-toggle *ngSwitchCase="'switch'" [formControl]="control">{{formControlData.id}}</mat-slide-toggle>
+</ng-container>
+
+

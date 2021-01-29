@@ -12,11 +12,13 @@ export class AppComponent {
   sampleForm: FormGroup;
 
   formControlData1: any;
+  formControlData2: any;
 
   constructor(private _fb: FormBuilder) {
     this.sampleForm = this._fb.group({});
     this.formControlData1 = {
       id: 'control1',
+      type: 'dropdown',
       data: [{
         name: 'apple',
         id: 1
@@ -26,14 +28,19 @@ export class AppComponent {
         id: 2
       }]
     };
+    this.formControlData2 = {
+      id: 'control2',
+      type: 'switch'
+    };
 
     this.sampleForm.addControl(this.formControlData1.id, new FormControl());
     this.sampleForm.addControl('test', new FormControl());
+    this.sampleForm.addControl(this.formControlData2.id, new FormControl());
 
     this.sampleForm.valueChanges.pipe(
       debounceTime(500)
     ).subscribe(formValue => {
-      debugger;
+      console.log(formValue);
     });
   }
 }

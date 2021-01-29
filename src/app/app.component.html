@@ -1,7 +1,11 @@
 <form [formGroup]="sampleForm">
   <app-dynamic-form-control [formControlName]="formControlData1.id" [formControlData]="formControlData1">
   </app-dynamic-form-control>
+  <br/>
   <mat-form-field>
     <input matInput formControlName="test" type="text">
   </mat-form-field>
+  <br/>
+  <app-dynamic-form-control [formControlName]="formControlData2.id" [formControlData]="formControlData2">
+  </app-dynamic-form-control>
 </form>

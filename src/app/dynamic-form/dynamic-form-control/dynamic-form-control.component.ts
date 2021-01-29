@@ -1,5 +1,5 @@
 import { ViewChild } from '@angular/core';
-import { Component, forwardRef, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ControlContainer, ControlValueAccessor, FormControl, FormControlDirective, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
@@ -46,26 +46,24 @@ export class DynamicFormControlComponent implements OnInit, ControlValueAccessor
     return this._formControlData;
   }
 
-  constructor(private _controlContainer: ControlContainer) {
-   }
+  constructor(private _controlContainer: ControlContainer) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   get control() {
     return this.formControl || this._controlContainer.control?.get(this.formControlName);
   }
 
   registerOnTouched(fn: any): void {
-    this.formControlDirective.valueAccessor?.registerOnTouched(fn);
+    this.formControlDirective?.valueAccessor?.registerOnTouched(fn);
   }
 
   registerOnChange(fn: any): void {
-    this.formControlDirective.valueAccessor?.registerOnChange(fn);
+    this.formControlDirective?.valueAccessor?.registerOnChange(fn);
   }
 
   writeValue(obj: any): void {
-    this.formControlDirective.valueAccessor?.writeValue(obj);
+    this.formControlDirective?.valueAccessor?.writeValue(obj);
   }
 
 }
